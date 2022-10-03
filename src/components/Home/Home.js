@@ -1,50 +1,32 @@
-import { Container, Gallery, GalleryItem, MovieLink, Img, MovieName, MovieGenges } from './Home.styled';
+import { useEffect, useState } from 'react';
+import {
+  Gallery,
+  GalleryItem,
+  MovieLink,
+} from './Home.styled';
+import {fetchTranding} from "../../services/api";
 
 export default function Home() {
+  const [tranding, setTranding] = useState([]);
+
+  useEffect(() => {
+    fetchTranding().then(tranding => {
+      setTranding(tranding);
+    });
+  }, []);
+
   return (
-    <Container>
+    <>
       <div>Tranding Today</div>
       <Gallery>
-        <GalleryItem>
-          <MovieLink to={"/movies/1"}>
-            <Img href="" alt="xxxxx" />
-            <MovieName>Movie's Name</MovieName>
-            <MovieGenges>movie's ganres</MovieGenges>
-          </MovieLink>
-        </GalleryItem>
-
-		<GalleryItem>
-          <MovieLink>
-            <Img href="" alt="xxxxx" />
-            <MovieName>Movie's Name</MovieName>
-            <MovieGenges>movie's ganres</MovieGenges>
-          </MovieLink>
-        </GalleryItem>
-
-		<GalleryItem>
-          <MovieLink>
-            <Img href="" alt="xxxxx" />
-            <MovieName>Movie's Name</MovieName>
-            <MovieGenges>movie's ganres</MovieGenges>
-          </MovieLink>
-        </GalleryItem>
-
-		<GalleryItem>
-          <MovieLink>
-            <Img href="" alt="xxxxx" />
-            <MovieName>Movie's Name</MovieName>
-            <MovieGenges>movie's ganres</MovieGenges>
-          </MovieLink>
-        </GalleryItem>
-
-		<GalleryItem>
-          <MovieLink>
-            <Img href="" alt="xxxxx" />
-            <MovieName>Movie's Name</MovieName>
-            <MovieGenges>movie's ganres</MovieGenges>
-          </MovieLink>
-        </GalleryItem>
+        {tranding.results && tranding.results.map(movie => (
+                  <GalleryItem key={movie.id}>
+                  <MovieLink to={`/movies/${movie.id}`}>
+                    {movie.name} {movie.title}
+                  </MovieLink>
+                </GalleryItem>
+        ))}
       </Gallery>
-    </Container>
+    </>
   );
 }

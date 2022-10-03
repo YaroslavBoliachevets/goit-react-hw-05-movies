@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { MdHome, MdLocalMovies } from 'react-icons/md';
-import { NavItem, Box } from './Layout.styled';
+import { NavItem, Box, Container } from './Layout.styled';
 
 const navItems = [
   { href: 'home', text: 'Home', icon: MdHome },
@@ -17,7 +17,9 @@ export default function Layout() {
           </NavItem>
         ))}
       </Box>
-      <Outlet />
+      <Container>
+        <Outlet />
+      </Container>
     </>
   );
 }

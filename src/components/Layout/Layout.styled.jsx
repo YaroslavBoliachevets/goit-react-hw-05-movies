@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 export const Container = styled.div`
-padding: 0 20px ;
+justify-content:center;
+padding:20px;
 `;
 
 export const Box = styled.nav`
