@@ -1,7 +1,14 @@
 import styled from "styled-components";
+import {NavLink} from 'react-router-dom';
 
-export const BackBtn = styled.button`
-margin-bottom:50px;
+export const BackBtn = styled(NavLink)`
+
+display:block;
+width:70px;
+text-align:center;
+text-decoration:none;
+padding:5px;
+margin-bottom:20px;
 
 cursor:pointer;
 background-color:white;

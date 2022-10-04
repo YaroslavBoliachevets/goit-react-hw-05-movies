@@ -14,11 +14,11 @@ const Review = () => {
 
 	return (<>
 	<ul>
-		{reviews && reviews.results.map(({author, content}) => {
+		{reviews && (reviews.results > 0 ) ? reviews.results.map(({author, content}) => {
 		return (<li key={author}>
 			<h3>{author}</h3>
 			<p>{content}</p>
-		</li>)})}
+		</li>)}) : <h2>No info</h2>}
 	</ul>
 	</>);
 }

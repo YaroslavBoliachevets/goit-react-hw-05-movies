@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieCast } from 'services/api';
 import { Gallery, Actor } from './Cast.styled';
@@ -8,7 +8,8 @@ const Cast = () => {
   const [base_url] = useState('https://image.tmdb.org/t/p/w500');
 
   const params = useParams();
-  console.log(params);
+  const location = useLocation();
+  console.log('cast', location.state);
 
   useEffect(() => {
     getMovieCast(params.movieId).then(({ cast }) => {
@@ -18,14 +19,12 @@ const Cast = () => {
 
   useEffect(() => {
     if (cast === null) return;
-
-    console.log(cast);
   }, [cast]);
 
   return (
     <>
       <Gallery>
-        {cast &&
+        {cast && 
           cast.map(({ name, character, profile_path }) => {
             return (
               <Actor key={name}>
