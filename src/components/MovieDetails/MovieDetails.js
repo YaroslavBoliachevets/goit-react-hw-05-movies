@@ -15,7 +15,7 @@ const MovieDetails = () => {
 
   useEffect(() => {
     getMovieByID(params.movieId).then(setMovie);
-  }, []);
+  }, [params]);
 
 
   useEffect(() => {

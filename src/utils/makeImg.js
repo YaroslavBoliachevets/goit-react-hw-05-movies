@@ -4,7 +4,7 @@ const makeImg = ({poster_path:posterPath}) => {
   if (!posterPath) {
     imgLink = 'https://i.ibb.co/BrYLsTv/default-movie-poster-min.jpg';
   }
-  console.log(imgLink);
+  // console.log(imgLink);
   return imgLink;
 };
 
