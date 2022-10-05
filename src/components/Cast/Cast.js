@@ -6,6 +6,8 @@ import { Gallery, Actor } from './Cast.styled';
 const Cast = () => {
   const [cast, setCast] = useState(null);
   const [base_url] = useState('https://image.tmdb.org/t/p/w500');
+  const imageNotFound =
+    'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930';
 
   const params = useParams();
   const location = useLocation();
@@ -24,11 +26,15 @@ const Cast = () => {
   return (
     <>
       <Gallery>
-        {cast && 
+        {cast &&
           cast.map(({ name, character, profile_path }) => {
             return (
               <Actor key={name}>
-                <img src={base_url + profile_path} alt="Actor" width="150px" />
+                <img
+                  src={profile_path ? base_url + profile_path : imageNotFound}
+                  alt="Actor"
+                  width="150px"
+                />
                 <p>{name}</p>
                 <p>{character}</p>
               </Actor>

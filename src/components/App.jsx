@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes,  } from 'react-router-dom';
+// import { Navigate } from 'react-router-dom';
 import Layout from './Layout';
 import Home from './Home';
 import Movies from './Movies';
@@ -16,8 +17,7 @@ export const App = () => {
           <Route path="cast" element={<Cast />}></Route>
           <Route path="reviews" element={<Reviews />}></Route>
         </Route>
-
-        <Route path="*" element={<div>Page not found</div>}></Route>
+        <Route path="*" element={<div><i>Page not found, but you can see</i><Home /></div> }></Route>
       </Route>
     </Routes>
   );

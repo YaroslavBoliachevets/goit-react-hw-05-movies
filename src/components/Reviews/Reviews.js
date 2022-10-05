@@ -1,4 +1,4 @@
-import {useParams} from 'react-router-dom';
+import {useParams, useLocation} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import {getReviews} from 'services/api';
 
@@ -11,6 +11,8 @@ const Review = () => {
 
 	}, [params])
 
+	const location = useLocation();
+	console.log('reviews', location.state);
 
 	return (<>
 	<ul>

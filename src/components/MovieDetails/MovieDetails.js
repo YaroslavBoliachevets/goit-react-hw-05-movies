@@ -14,8 +14,6 @@ const MovieDetails = () => {
   const params = useParams();
   const location = useLocation();
 
-  // console.log(location.state.from);
-
   const backLinkHref = location.state?.from ?? '/movies';
 
   useEffect(() => {
@@ -57,7 +55,7 @@ const MovieDetails = () => {
             </Link>
           </li>
           <li>
-            <Link to={'reviews'} state={{ fron: backLinkHref }}>
+            <Link to={'reviews'} state={{ from: backLinkHref }}>
               Reviews
             </Link>
           </li>
