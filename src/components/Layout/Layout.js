@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { MdHome, MdLocalMovies } from 'react-icons/md';
 import { NavItem, Box, Container } from './Layout.styled';
@@ -18,7 +19,9 @@ export default function Layout() {
         ))}
       </Box>
       <Container>
-        <Outlet />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
       </Container>
     </>
   );

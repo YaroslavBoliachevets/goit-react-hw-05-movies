@@ -1,4 +1,4 @@
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams,  } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieCast } from 'services/api';
 import { Gallery, Actor } from './Cast.styled';
@@ -10,9 +10,6 @@ const Cast = () => {
     'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930';
 
   const params = useParams();
-  const location = useLocation();
-  console.log('cast', location.state);
-
   useEffect(() => {
     getMovieCast(params.movieId).then(({ cast }) => {
       setCast(cast);

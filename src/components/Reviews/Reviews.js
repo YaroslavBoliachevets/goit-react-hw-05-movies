@@ -1,4 +1,4 @@
-import {useParams, useLocation} from 'react-router-dom';
+import {useParams,} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import {getReviews} from 'services/api';
 
@@ -10,9 +10,6 @@ const Review = () => {
 		getReviews(params.movieId).then(setReviews);
 
 	}, [params])
-
-	const location = useLocation();
-	console.log('reviews', location.state);
 
 	return (<>
 	<ul>
