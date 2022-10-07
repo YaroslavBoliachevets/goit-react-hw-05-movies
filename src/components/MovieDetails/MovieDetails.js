@@ -30,7 +30,7 @@ const MovieDetails = () => {
     <>
       <BackBtn to={backLinkHref}> Go back</BackBtn>
 
-      {
+      
         <MovieCard>
           <Img src={img} alt="movie" />
           <Info>
@@ -44,18 +44,17 @@ const MovieDetails = () => {
             <p>{genres}</p>
           </Info>
         </MovieCard>
-      }
 
       <div>
         <h2>Additional information:</h2>
         <ul>
           <li>
-            <Link to={'cast'} state={{ from: backLinkHref }}>
+            <Link to='cast' state={{ from: backLinkHref }}>
               Cast
             </Link>
           </li>
           <li>
-            <Link to={'reviews'} state={{ from: backLinkHref }}>
+            <Link to='reviews' state={{ from: backLinkHref }}>
               Reviews
             </Link>
           </li>

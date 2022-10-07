@@ -15,7 +15,7 @@ height: ${p=> p.theme.iconSizes.l };
 margin-right: ${p=> p.theme.space[3]}px;
 `;
 
-export const Gallery = styled.ul`
+export const CardsGallery = styled.ul`
 justify-content:center;
 display:flex;
 flex-wrap:wrap;

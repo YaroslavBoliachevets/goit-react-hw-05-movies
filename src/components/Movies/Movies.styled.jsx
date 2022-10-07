@@ -35,13 +35,18 @@ margin-left: 10px;
 `;
 
 export const Gallery = styled.ul`
+display:flex;
+gap:${p=> p.theme.space[5]}px;
+justify-content:center;
+flex-wrap:wrap;
 padding:0;
 list-style:none;
 `;
 
 export const GalleryItem = styled.li`
-padding: 10px 0px;
-border-radius:8px;
+width:${p=> p.theme.sizes.quater};
+padding: ${p => p.theme.space[0]}px;
+border-radius:${p=> p.theme.radiii.m};
 &:hover {
 	box-shadow: 5px 5px 8px 3px rgba(0, 0, 0, 0.3);
 }

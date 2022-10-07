@@ -1,34 +1,40 @@
 import { useEffect, useState } from 'react';
-import {useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { fetchTranding } from '../../services/api';
+// import {apiGenres} from '../../utils/genres';
+// import {AiFillFire} from 'react-icons/ai';
+
 import {
-  Gallery,
-  GalleryItem,
-  MovieLink,
+  Title,
+  TitleIcon,
 } from './Home.styled';
-import {fetchTranding} from "../../services/api";
+import Gallery from '../Gallery';
 
 export default function Home() {
-  const [tranding, setTranding] = useState([]);
+  const [tranding, setTranding] = useState();
   const location = useLocation();
+  // const [base_url] = useState('https://image.tmdb.org/t/p/w500');
+
+  // const imageNotFound =
+  //   'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930';
 
   useEffect(() => {
-    fetchTranding().then(tranding => {
-      setTranding(tranding);
-    });
+    fetchTranding().then(setTranding);
   }, []);
+
+  if (!tranding) {
+    return null;
+  }
 
   return (
     <>
-      <div>Tranding Today</div>
-      <Gallery>
-        {tranding.results && tranding.results.map(movie => (
-                  <GalleryItem key={movie.id}>
-                  <MovieLink to={`/movies/${movie.id}`} state={{from:location}}>
-                    {movie.name} {movie.title}
-                  </MovieLink>
-                </GalleryItem>
-        ))}
-      </Gallery>
+      <div>
+        <Title>
+          <TitleIcon />
+          Tranding Today
+        </Title>
+      </div>
+      <Gallery movies={tranding.results} location={location}/>
     </>
   );
 }

@@ -3,12 +3,10 @@ import {
   Box,
   InputSearchMovie,
   SearchBtn,
-  Gallery,
-  GalleryItem,
-  MovieLink,
 } from './Movies.styled';
+import Gallery from '../Gallery';
 import { useState, useEffect } from 'react';
-import { useSearchParams, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { getMoviesBySearch } from 'services/api';
 
 function Movies() {
@@ -16,8 +14,6 @@ function Movies() {
   const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsValue = searchParams.get('query') ?? '';
-  const location = useLocation();
-
   useEffect(() => {
     if (query !== searchParamsValue) {
       getMoviesBySearch(searchParamsValue).then(setMovies);
@@ -53,16 +49,7 @@ function Movies() {
       </Box>
 
       {movies && ((movies.results.length > 0) ? (
-        <Gallery>
-          {movies.results &&
-            movies.results.map(movie => (
-              <GalleryItem key={movie.id}>
-                <MovieLink to={`/movies/${movie.id}`} state={{from:location}}>
-                  {movie.name} {movie.title}
-                </MovieLink> 
-              </GalleryItem>
-            ))}
-        </Gallery>
+        <Gallery movies={movies.results}/>
       ) : (
         <h3>No info</h3>
       ))}
